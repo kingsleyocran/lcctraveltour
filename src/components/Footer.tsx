@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import * as content from "../../utils/content";
+import * as content from "../utils/content";
 
 import FacebookIcon from "./../../public/assets/socials/facebook.svg";
 import InstagramIcon from "./../../public/assets/socials/instagram.svg";
@@ -94,16 +94,16 @@ function Footer() {
 
       {/* Copyright */}
       <div className=" p-6 flex flex-col md:flex-row gap-1 md:gap-4 items-center justify-center bg-neutral-200 rounded-3xl">
-        <p
-          className={`text-base md:text-sm text-black `}
-        >
+        <p className={`text-base md:text-sm text-black `}>
           Copyright © Boxplay Ventures {new Date().getFullYear()}
         </p>
 
         <div className="flex gap-1">
           <p className={` text-base md:text-sm text-black`}>Website by </p>
           <button onClick={() => router.push("/")}>
-            <p className={`text-base md:text-sm text-[#B53A3F] hover:underline`}>
+            <p
+              className={`text-base md:text-sm text-[#B53A3F] hover:underline`}
+            >
               OneClick Creative Agency
             </p>
           </button>

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AppThunk } from "../../app/store";
-import * as content from "../../../utils/content";
+import * as content from "../../../src/utils/content";
 import { reducer } from "./index";
 import listAllTeamMembers from "../../../backend/firebase/team/getAllTeamMembers";
 import addNewTeamMember from "../../../backend/firebase/team/addTeamMember";
@@ -94,13 +94,12 @@ export const deleteTeamMemberAsync = createAsyncThunk(
 );
 
 //THUNK LOGICS
-export const checkBeforeFetchTeam =
-  (): AppThunk => (dispatch, getState) => {
-    const currentValue = reducer.selectTeam(getState());
-    if (!currentValue) {
-      dispatch(fetchTeamMemberAsync());
-    }
-  };
+export const checkBeforeFetchTeam = (): AppThunk => (dispatch, getState) => {
+  const currentValue = reducer.selectTeam(getState());
+  if (!currentValue) {
+    dispatch(fetchTeamMemberAsync());
+  }
+};
 
 export const addNewTeamMemberAndFetch =
   (dataObject: any, selectedFile: any): AppThunk =>

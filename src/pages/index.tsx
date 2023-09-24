@@ -2,13 +2,10 @@ import CustomHead from "@/components/others/CustomHead";
 import HomeHeader from "@/components/home/HomeHeader";
 import NavBar from "@/components/NavBar";
 import React from "react";
-import * as content from "../../utils/content";
-import HomeCommunitySection from "@/components/home/HomeCommunitySection";
-import ShortContent from "@/components/others/ShortContent";
-import HomeVisionMission from "@/components/home/HomeVisionMission";
 import FounderQuoteSection from "@/components/others/FounderQuoteSection";
 import Footer from "@/components/Footer";
 import EventsNewsSection from "@/components/others/EventsNewsSection";
+import HomeAboutSection from "@/components/home/HomeAboutSection";
 
 export default function Home() {
   return (
@@ -19,17 +16,11 @@ export default function Home() {
 
         <HomeHeader />
 
-        <ShortContent content={content.homeContent1}/>
+        <HomeAboutSection/>
 
-        <HomeCommunitySection />
+        <EventsNewsSection />
 
-        <HomeVisionMission />
-        
-        <FounderQuoteSection />
-        
-        <EventsNewsSection/>
-        
-        <Footer/>
+        <Footer />
       </main>
     </>
   );

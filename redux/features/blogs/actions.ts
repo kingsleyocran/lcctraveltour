@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AppThunk } from "../../app/store";
-import * as helpers from "../../../utils/helpers";
+import * as helpers from "../../../src/utils/helpers";
 import { reducer } from "./index";
 import getAllBlogs from "../../../backend/firebase/blogs/getAllBlogs";
 import getBlog from "../../../backend/firebase/blogs/getBlog";
@@ -23,7 +23,9 @@ export async function fetchBlogsGetProps(): Promise<any> {
       blogID: item.data().blogID ?? "",
       name: item.data().name ?? "",
       content: item.data().content ?? "",
-      dateCreated: item.data().dateCreated ? helpers.convertTimestamp(item.data().dateCreated) : "",
+      dateCreated: item.data().dateCreated
+        ? helpers.convertTimestamp(item.data().dateCreated)
+        : "",
     });
   });
 
@@ -43,7 +45,9 @@ export const fetchAllBlogsAsync = createAsyncThunk(
         blogID: item.data().blogID ?? "",
         name: item.data().name ?? "",
         content: item.data().content ?? "",
-        dateCreated: item.data().dateCreated ? helpers.convertTimestamp(item.data().dateCreated) : "",
+        dateCreated: item.data().dateCreated
+          ? helpers.convertTimestamp(item.data().dateCreated)
+          : "",
       });
     });
 
@@ -64,11 +68,13 @@ export const fetchBlogAsync = createAsyncThunk(
         blogID: item.data().blogID ?? "",
         name: item.data().name ?? "",
         content: item.data().content ?? "",
-        dateCreated: item.data().dateCreated ? helpers.convertTimestamp(item.data().dateCreated) : "",
+        dateCreated: item.data().dateCreated
+          ? helpers.convertTimestamp(item.data().dateCreated)
+          : "",
       });
     });
 
-    console.log(result)
+    console.log(result);
 
     return result;
   }
@@ -118,13 +124,12 @@ export const deleteBlogAsync = createAsyncThunk(
 );
 
 //THUNK LOGICS
-export const checkBeforeFetchBlogs =
-  (): AppThunk => (dispatch, getState) => {
-    const currentValue = reducer.selectBlogList(getState());
-    if (!currentValue) {
-      dispatch(fetchAllBlogsAsync());
-    }
-  };
+export const checkBeforeFetchBlogs = (): AppThunk => (dispatch, getState) => {
+  const currentValue = reducer.selectBlogList(getState());
+  if (!currentValue) {
+    dispatch(fetchAllBlogsAsync());
+  }
+};
 
 export const addNewBlogAndFetch =
   (dataObject: any, selectedFile: any): AppThunk =>

@@ -20,36 +20,36 @@
 
 
 @font-face {
-  font-family: "Visby";
-  src: url('../../public/assets/fonts/VisbyRegular.otf');
+  font-family: "VisueltPro";
+  src: url('../../public/assets/fonts/VisueltPro-Regular.ttf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "VisueltPro";
+  src: url('../../public/assets/fonts/VisueltPro-Medium.ttf');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Visby";
-  src: url('../../public/assets/fonts/VisbyMedium.otf');
+  font-family: "VisueltPro";
+  src: url('../../public/assets/fonts/VisueltPro-Bold.ttf');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Visby";
-  src: url('../../public/assets/fonts/VisbySemibold.otf');
+  font-family: "VisueltPro";
+  src: url('../../public/assets/fonts/VisueltPro-Bold.ttf');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Visby";
-  src: url('../../public/assets/fonts/VisbyBold.otf');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Visby";
-  src: url('../../public/assets/fonts/VisbyExtrabold.otf');
+  font-family: "VisueltPro";
+  src: url('../../public/assets/fonts/VisueltPro-Black.ttf');
   font-weight: 800;
   font-style: normal;
 }
@@ -58,9 +58,13 @@
   --background: theme("colors.white");
   --background-secondary: theme("colors.gray.50");
 
-  --accent-dark: rgb(246 179 0);
-  --accent-medium: rgb(246 179 0);
-  --accent-light: rgb(246 179 0);
+  --accent-dark: #F79301;
+  --accent-medium: #F79301;
+  --accent-light: #F79301;
+
+  --primary-dark: #15B2FF;
+  --primary-medium: #15B2FF;
+  --primary-light: #15B2FF;
 
   ---dark: theme("colors.neutral.900");
   ---medium: theme("colors.neutral.700");
@@ -84,31 +88,26 @@
 
 
 body {
-  font-family: 'Visby';
-  font-weight: 500;
+  font-family: 'VisueltPro';
+  font-weight: 300;
 }
 
 .bold {
-  font-family: "Visby";
-  font-weight: 700;
-}
-
-.semibold {
-  font-family: "Visby";
-  font-weight: 700;
+  font-family: "VisueltPro";
+  font-weight: 600;
 }
 
 .medium {
-  font-family: "Visby";
-  font-weight: 500;
-}
-
-.normal {
-  font-family: "Visby";
+  font-family: "VisueltPro";
   font-weight: 400;
 }
 
+.regular {
+  font-family: "VisueltPro";
+  font-weight: 300;
+}
+
 .black {
-  font-family: "Visby";
+  font-family: "VisueltPro";
   font-weight: 800;
 }

@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 //import { htmlTagRemover } from "../utils/helpers";
-import * as content from "../../../utils/content";
+import * as content from "../../utils/content";
 
 import ChevronLeftIcon from "./../../../public/assets/icons/chevron_left.svg";
 import ChevronRightIcon from "./../../../public/assets/icons/chevron_right.svg";
@@ -56,11 +56,27 @@ function EventsNewsSection() {
         <h3 className={` text-2xl lg:text-3xl py-4`}>Events + News</h3>
 
         <div className="flex flex-row gap-2">
-          <button ref={prevRef} className="h-[40px] w-[40px] bg-neutral-200 rounded-full flex flex-row justify-center items-center">
-            <ChevronLeftIcon width="8" height="18" viewBox="0 0 12.926 22.853" fill="#000000"/>
+          <button
+            ref={prevRef}
+            className="h-[40px] w-[40px] bg-neutral-200 rounded-full flex flex-row justify-center items-center"
+          >
+            <ChevronLeftIcon
+              width="8"
+              height="18"
+              viewBox="0 0 12.926 22.853"
+              fill="#000000"
+            />
           </button>
-          <button ref={nextRef} className="h-[40px] w-[40px] bg-neutral-200 rounded-full flex flex-row justify-center items-center">
-            <ChevronRightIcon width="8" height="18" viewBox="0 0 12.926 22.853" fill="#000000"/>
+          <button
+            ref={nextRef}
+            className="h-[40px] w-[40px] bg-neutral-200 rounded-full flex flex-row justify-center items-center"
+          >
+            <ChevronRightIcon
+              width="8"
+              height="18"
+              viewBox="0 0 12.926 22.853"
+              fill="#000000"
+            />
           </button>
         </div>
       </div>
@@ -81,7 +97,11 @@ function EventsNewsSection() {
         >
           {newsData.length > 0 &&
             newsData.slice(0, 10).map((data: (typeof newsData)[0]) => (
-              <SwiperSlide key={data.title}  onClick={() => {}} style={{ width: "300px" }}>
+              <SwiperSlide
+                key={data.title}
+                onClick={() => {}}
+                style={{ width: "300px" }}
+              >
                 <div className="rounded-3xl ">
                   {/* Cover Image */}
                   <div className="flex-none h-350 md:h-400 w-full relative rounded-3xl ">
@@ -126,7 +146,12 @@ function EventsNewsSection() {
 
       {/* MoreButton */}
       <div className="flex justify-center mt-8">
-        <button type="button" className="bg-neutral-300 px-6 py-3 rounded-full text-lg md:text-base">See more</button>
+        <button
+          type="button"
+          className="bg-neutral-300 px-6 py-3 rounded-full text-lg md:text-base"
+        >
+          See more
+        </button>
       </div>
     </div>
   );

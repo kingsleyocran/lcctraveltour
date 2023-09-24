@@ -1,7 +1,7 @@
 import React from "react";
 import QuoteIcon from "./../../../public/assets/icons/quote.svg";
 import Image from "next/image";
-import * as content from "../../../utils/content";
+import * as content from "../../utils/content";
 
 function FounderQuoteSection() {
   return (

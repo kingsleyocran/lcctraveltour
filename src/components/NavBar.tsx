@@ -6,6 +6,7 @@ import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import MenuIcon from "./../../public/assets/icons/menu.svg";
 import CloseIcon from "./../../public/assets/icons/close.svg";
+import Logo from "./../../public/assets/brand/logo.svg";
 
 function NavBar() {
   const router = useRouter();
@@ -24,68 +25,66 @@ function NavBar() {
     <>
       <nav className="bg-white sticky top-0 w-full z-50 transition-all">
         {/* NAVBAR DESKTOP */}
-        <div className="flex justify-between items-center max-w-7xl mx-5 h-[55px] xl:mx-auto">
+        <div className="flex justify-between items-center max-w-7xl  mx-4 md:mx-12 h-[55px] xl:mx-auto">
           {/* Logo */}
           <button
             type="button"
             onClick={() => router.push("/")}
             className="relative flex items-center gap-1"
           >
-            <div className="flex flex-row items-center gap-2 md:text-base semibold text-xl text-th-primary-dark ">
-              {/* <Logo /> */}
-              <Image
-                src={`/assets/brand/logo_1.png`}
-                alt="menu icon"
-                width={40}
-                height={40}
-              />
-              <p className=" hidden md:flex text-base semibold lg:text-sm text-th-primary-dark">
-                Yes to Youth
-              </p>
-            </div>
+            <Logo width="75" height="45" viewBox="0 0 65 38"/>
           </button>
 
-          {/* Menu */}
-          <div className="flex flex-row gap-2">
-            {/* DesktopMenu */}
-            <div className="lg:flex flex-row gap-2 hidden ">
-              <button
-                onClick={() => router.push("/early-access")}
-                type="button"
-                className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-100 transition-all text-th-primary-dark bg-transparent px-6 py-2 rounded-full"
-              >
-                <p>Communities</p>
-              </button>
+          {/* DesktopMenu */}
+          <div className="lg:flex flex-row gap-4 hidden ">
+            <button
+              onClick={() => router.push("/early-access")}
+              type="button"
+              className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-100 transition-all text-th-dark bg-transparent px-4 py-2 rounded-full"
+            >
+              <p>Tours</p>
+            </button>
 
-              <button
-                onClick={() => router.push("/event-news")}
-                type="button"
-                className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-100 transition-all text-th-primary-dark bg-transparent px-6 py-2 rounded-full"
-              >
-                <p>Events + News</p>
-              </button>
+            <button
+              onClick={() => router.push("/event-news")}
+              type="button"
+              className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-100 transition-all text-th-dark bg-transparent px-4 py-2 rounded-full"
+            >
+              <p>Programs</p>
+            </button>
 
-              <button
-                onClick={() => router.push("/contact-us")}
-                type="button"
-                className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-100 transition-all text-th-primary-dark bg-transparent px-6 py-2 rounded-full"
-              >
-                <p>Contact Us</p>
-              </button>
-            </div>
+            <button
+              onClick={() => router.push("/contact-us")}
+              type="button"
+              className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-100 transition-all text-th-dark bg-transparent px-4 py-2 rounded-full"
+            >
+              <p>About</p>
+            </button>
 
+            <button
+              onClick={() => router.push("/contact-us")}
+              type="button"
+              className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-100 transition-all text-th-dark bg-transparent px-4 py-2 rounded-full"
+            >
+              <p>Blogs & News</p>
+            </button>
+          </div>
+
+          { /* CTA Button */}
+          <div>
             <button
               onClick={() => router.push("/donate")}
               type="button"
-              className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-300 transition-all text-th-primary-dark bg-neutral-200 px-6 py-2 rounded-full"
+              className="lg:flex flex-row gap-4 hidden semibold h-[35px] text-base lg:text-sm  transition-all
+              text-white bg-th-accent-medium px-6 py-2 rounded-xl"
             >
-              <p>Donate now</p>
+              <p>Book A Tour</p>
             </button>
 
             {/* Menu Mobile Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`text-th-primary-dark lg:hidden
+              className={`text-th-dark lg:hidden
                h-11 w-11 bg-neutral-200 rounded-full flex flex-col items-center justify-center`}
             >
               <MenuIcon
@@ -133,7 +132,7 @@ function NavBar() {
                     {/* Menu Mobile Button */}
                     <button
                       onClick={() => setIsOpen(!isOpen)}
-                      className=" text-th-primary-dark lg:hidden bg-neutral-200 h-10 w-10 rounded-full flex flex-col items-center justify-center"
+                      className=" text-th-dark lg:hidden bg-neutral-200 h-10 w-10 rounded-full flex flex-col items-center justify-center"
                     >
                       <CloseIcon
                         width="13"
@@ -149,9 +148,7 @@ function NavBar() {
                       onClick={() => router.push("/")}
                       className="py-5 px-6 w-full  flex flex-col justify-center  items-start active:bg-neutral-200 hover:bg-neutral-200"
                     >
-                      <p
-                        className={`semibold text-xl text-th-text-medium`}
-                      >
+                      <p className={`semibold text-xl text-th-text-medium`}>
                         Home
                       </p>
                     </button>
@@ -161,9 +158,7 @@ function NavBar() {
                       onClick={() => router.push("/")}
                       className="py-5 px-6 w-full  flex flex-col justify-center  items-start active:bg-neutral-200 hover:bg-neutral-200"
                     >
-                      <p
-                        className={`semibold text-xl text-th-text-medium`}
-                      >
+                      <p className={`semibold text-xl text-th-text-medium`}>
                         Communities
                       </p>
                     </button>
@@ -173,9 +168,7 @@ function NavBar() {
                       onClick={() => router.push("/")}
                       className="py-5 px-6 w-full  flex flex-col justify-center  items-start active:bg-neutral-200 hover:bg-neutral-200"
                     >
-                      <p
-                        className={`semibold text-xl text-th-text-medium`}
-                      >
+                      <p className={`semibold text-xl text-th-text-medium`}>
                         Events + News
                       </p>
                     </button>
@@ -185,9 +178,7 @@ function NavBar() {
                       onClick={() => router.push("/")}
                       className="py-5 px-6 w-full  flex flex-col justify-center  items-start active:bg-neutral-200 hover:bg-neutral-200"
                     >
-                      <p
-                        className={`semibold text-xl text-th-text-medium`}
-                      >
+                      <p className={`semibold text-xl text-th-text-medium`}>
                         Contact Us
                       </p>
                     </button>
