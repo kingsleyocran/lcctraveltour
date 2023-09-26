@@ -3,6 +3,10 @@ import BookATourIcon1 from "../../public/assets/icons/personalized-itenaries.svg
 import BookATourIcon2 from "../../public/assets/icons/expert-guided.svg";
 import BookATourIcon3 from "../../public/assets/icons/education-beyond.svg";
 
+import WorkStudyIcon from "../../public/assets/icons/work-study.svg";
+import CrossCulturalIcon from "../../public/assets/icons/cross-cultural.svg";
+import NursingIcon from "../../public/assets/icons/nursing.svg";
+
 export function HeaderTextComponent() {
   return (
     <div className="capitalize">
@@ -31,4 +35,58 @@ export const bookATourSectionList = [
   },
 ];
 
-export const homeAboutText = "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences."
+export const homeAboutText =
+  "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences.";
+
+export const homeToursData = [
+  {
+    imgUrl: "/assets/images/home-tours-1.png",
+    title: "Educational Tours",
+    content:
+      "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences.",
+  },
+  {
+    imgUrl: "/assets/images/home-tours-2.png",
+    title: "Explore Africa",
+    content:
+      "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences.",
+  },
+  {
+    imgUrl: "/assets/images/home-tours-3.png",
+    title: "Corporate Retreats",
+    content:
+      "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences.",
+  },
+];
+
+export const homeProgramsData = [
+  {
+    icon: <WorkStudyIcon/>,
+    title: "Work-Study Programs",
+    content:
+      "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences.",
+  },
+  {
+    icon: <CrossCulturalIcon/>,
+    title: "Cross-Cultural Exchanges",
+    content:
+      "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences.",
+  },
+  {
+    icon: <NursingIcon/>,
+    title: "Nursing Recruitment",
+    content:
+      "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences.",
+  },
+];
+
+
+export const testimonialTestData = [
+  ...Array(10),
+].map(() => ({
+  name: "King Okonko",
+  content:
+    "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences. Established in 2005, LCC Travel is a globally recognized travel and tour ",
+  portfolio: "CEO - Tinzu",
+  imgUrl: "/assets/images/test-image.png",
+}));
