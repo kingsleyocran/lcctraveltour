@@ -1,0 +1,50 @@
+.primarybold {
+  font-family: "VisueltPro";
+  font-weight: bold;
+}
+
+.primarydemibold {
+  font-family: "VisueltPro";
+  font-weight: 600;
+}
+
+.primaryextrabold {
+  font-family: "VisueltPro";
+  font-weight: 800;
+}
+
+.primarymedium {
+  font-family: "VisueltPro";
+  font-weight: medium;
+}
+
+.primarynormal {
+  font-family: "VisueltPro";
+  font-weight: normal;
+}
+
+.secondarybold {
+  font-family: "VisueltPro";
+  font-weight: bold;
+}
+
+.secondarymedium {
+  font-family: "VisueltPro";
+  font-weight: medium;
+}
+
+.secondarymediumitalic {
+  font-family: "VisueltPro";
+  font-weight: medium;
+  font-style: italic;
+}
+
+.secondarydemibold {
+  font-family: "VisueltPro";
+  font-weight: 600;
+}
+
+.secondarynormal {
+  font-family: "VisueltPro";
+  font-weight: normal;
+}

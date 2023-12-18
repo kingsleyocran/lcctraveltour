@@ -8,9 +8,11 @@ import HomeAboutSection from "@/components/home/HomeAboutSection";
 import HomeToursSection from "@/components/home/HomeToursSection";
 import HomeProgramsSection from "@/components/home/HomeProgramsSection";
 import CitiesTilted from "@/components/home/CitiesTilted";
-import TestomonialSection from "@/components/home/TestomonialSection";
+import TestomonialSection from "@/components/others/TestomonialSection";
 import GellerySection from "@/components/home/GallerySection";
 import BlogNewsSection from "@/components/home/BlogNewsSection";
+import NewsletterSection from "@/components/others/NewsletterSection";
+import FAQSection from "@/components/others/FAQSection";
 
 export default function Home() {
   return (
@@ -38,7 +40,11 @@ export default function Home() {
         <GellerySection />
         <div className="h-[70px] md:h-[100px]"></div>
 
-        <BlogNewsSection/>
+        <BlogNewsSection />
+        
+        <NewsletterSection />
+        
+        <FAQSection/>
 
         <Footer />
       </main>
