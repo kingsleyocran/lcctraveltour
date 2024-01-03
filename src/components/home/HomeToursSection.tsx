@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { homeToursData } from "@/utils/web-content";
+import { homeToursData } from "@/utils/content";
 
 function HomeToursSection() {
   return (

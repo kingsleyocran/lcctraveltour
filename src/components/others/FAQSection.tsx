@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { faqContent, homeAboutText } from "@/utils/web-content";
+import { faqContent, homeAboutText } from "@/utils/content";
 import ChevronDownIcon from "../../../public/assets/icons/chevron_down.svg";
 import parse from "html-react-parser";
 
@@ -54,10 +54,12 @@ export function FAQCard({
 
   return (
     <div className={`flex-1 flex-col rounded-3xl transition-all duration-200`}>
-      <div className={`flex flex-row items-center gap-5 justify-between cursor-pointer
+      <div
+        className={`flex flex-row items-center gap-5 justify-between cursor-pointer
       hover:bg-opacity-20 hover:bg-white py-3 rounded-full px-4 transition-all duration-500 ${
         isOpen ? "mb-3" : ""
-      } `}>
+      } `}
+      >
         <div onClick={() => setisOpen(!isOpen)} className="grow ">
           <h5
             className={`text-md md:text-lg text-white transition-all duration-200`}

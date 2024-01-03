@@ -1,4 +1,4 @@
-import { homeProgramsData } from "@/utils/web-content";
+import { homeProgramsData } from "@/utils/content";
 import React from "react";
 import Image from "next/image";
 

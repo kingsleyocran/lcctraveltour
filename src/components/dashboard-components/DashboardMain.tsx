@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import ViewTeam from "./views/ViewTeam";
-import ViewProjects from "./views/ViewProjects";
-import ViewPartners from "./views/ViewPartners";
 import { useRouter } from "next/router";
 import { useAuth } from "@/context/AuthContext";
+import ViewTours from "./views/ViewTours"
+import ViewGallery from "./views/ViewGallery"
+import ViewTestimonials from "./views/ViewTestimonials"
+import ViewBlogs from "./views/ViewBlogs"
 
 function DashboardMain() {
   const { logOut } = useAuth();
   const router = useRouter();
   const [tabIndex, settabIndex] = useState(0);
 
-  const pages = ["Team", "Projects", "Partners"];
+  const pages = ["Tours", "Gallery", "Testimonials", "Blogs"];
 
   return (
 
@@ -48,10 +49,11 @@ function DashboardMain() {
         </div>
 
         {/* Page View */}
-        <div className="rounded-2xl bg-th-container-surface p-8 grow">
-          {0 == tabIndex && <ViewTeam />}
-          {1 == tabIndex && <ViewProjects />}
-          {3 == tabIndex && <ViewPartners />}
+        <div className="rounded-2xl bg-th-container-surface p-8 grow w-1/5">
+          {0 == tabIndex && <ViewTours />}
+          {1 == tabIndex && <ViewGallery />}
+          {2 == tabIndex && <ViewTestimonials />}
+          {3 == tabIndex && <ViewBlogs />}
         </div>
       </div>
     </div>

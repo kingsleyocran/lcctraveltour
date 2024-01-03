@@ -15,7 +15,7 @@ const Dashboard: NextPage = () => {
 
   return (
     <ProtectedRoute>
-      <CustomHead title="Boxplay Ventures - Dashboard" />
+      <CustomHead title="LCC Travel and Tours - Dashboard" />
 
       {/* Body */}
       <body className={`transition-all bg-th-background`}>

@@ -16,7 +16,7 @@ const DashboardLogin: NextPage = () => {
 
   return (
     <>
-      <CustomHead title="Boxplay Ventures - Admin Login" />
+      <CustomHead title="LCC Travel and Tours - Admin Login" />
 
       {/* Body */}
       <body className={`transition-all bg-th-background`}>

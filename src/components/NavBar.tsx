@@ -38,7 +38,7 @@ function NavBar() {
           {/* DesktopMenu */}
           <div className="lg:flex flex-row gap-4 hidden ">
             <button
-              onClick={() => router.push("/early-access")}
+              onClick={() => router.push("/tours")}
               type="button"
               className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-100 transition-all text-th-dark bg-transparent px-4 py-2 rounded-full"
             >
@@ -46,7 +46,7 @@ function NavBar() {
             </button>
 
             <button
-              onClick={() => router.push("/event-news")}
+              onClick={() => router.push("/programs")}
               type="button"
               className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-100 transition-all text-th-dark bg-transparent px-4 py-2 rounded-full"
             >
@@ -54,7 +54,7 @@ function NavBar() {
             </button>
 
             <button
-              onClick={() => router.push("/contact-us")}
+              onClick={() => router.push("/about")}
               type="button"
               className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-100 transition-all text-th-dark bg-transparent px-4 py-2 rounded-full"
             >
@@ -62,7 +62,15 @@ function NavBar() {
             </button>
 
             <button
-              onClick={() => router.push("/contact-us")}
+              onClick={() => router.push("/gallery")}
+              type="button"
+              className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-100 transition-all text-th-dark bg-transparent px-4 py-2 rounded-full"
+            >
+              <p>Gallery</p>
+            </button>
+
+            <button
+              onClick={() => router.push("/blogs")}
               type="button"
               className="semibold h-[40px] text-base lg:text-sm hover:bg-neutral-100 transition-all text-th-dark bg-transparent px-4 py-2 rounded-full"
             >

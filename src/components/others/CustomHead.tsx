@@ -9,9 +9,9 @@ function CustomHead({ title }: { title:string }) {
 
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="description" content="There's Greatness in everyone. Start your Tomorrow Today." />
-      <meta name="apple-mobile-web-app-title" content="Yes To Youth" />
-      <meta name="application-name" content="Yes To Youth" />
+      <meta name="description" content="A pioneering education-focused travel committed to enriching the lives of students and the middle-class populace through premium yet affordable travel experiences." />
+      <meta name="apple-mobile-web-app-title" content="LCC Travel and Tours" />
+      <meta name="application-name" content="LCC Travel and Tours" />
 
       {/* 
         <meta name="theme-color" content="#ffffff" />

@@ -1,13 +1,17 @@
 import { configureStore,  ThunkAction, Action } from '@reduxjs/toolkit'
 import * as projectsRedux from '../features/projects';
-import * as teamRedux from '../features/team';
-import * as partnersRedux from '../features/partners';
+import * as galleryRedux from '../features/gallery';
+import * as blogsRedux from '../features/blogs';
+import * as toursRedux from '../features/tours';
+import * as testimonialsRedux from '../features/testimonials';
 
 export const store = configureStore({
   reducer: {
     projects: projectsRedux.reducer.default,
-    partners: partnersRedux.reducer.default,
-    team: teamRedux.reducer.default
+    gallery: galleryRedux.reducer.default,
+    blogs: blogsRedux.reducer.default,
+    tours: toursRedux.reducer.default,
+    testimonials: testimonialsRedux.reducer.default
   },
 });
 

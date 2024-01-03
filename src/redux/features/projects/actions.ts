@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AppThunk } from "../../app/store";
-import * as content from "@/utils/content";
 import { reducer } from "./index";
 import listAllProjects from "@/backend/firebase/projects/getAllProjects";
 import addNewProject from "@/backend/firebase/projects/addProject";
 import deleteProject from "@/backend/firebase/projects/deleteProject";
 import updateProject from "@/backend/firebase/projects/updateProject";
 import { updateImage } from "@/backend/firebase/projects/updateProject";
+import { convertTimestamp } from "@/utils/helpers";
 
 //ASYNC THUNKS
 
@@ -24,6 +24,7 @@ export async function fetchProjectsGetProps(): Promise<any> {
       content: item.data().content,
       link: item.data().link,
       sector: item.data().sector,
+      dateCreated: item.data().dateCreated ? convertTimestamp(item.data().dateCreated) : "",
     });
   });
 
@@ -106,28 +107,28 @@ export const checkBeforeFetchProjects =
 
 export const addNewProjectAndFetch =
   (dataObject: any, selectedFile: any): AppThunk =>
-  (dispatch, getState) => {
-    dispatch(addNewProjectAsync({ selectedFile, dataObject }));
+  async (dispatch, getState) => {
+    await dispatch(addNewProjectAsync({ selectedFile, dataObject }));
     dispatch(fetchProjectsAsync());
   };
 
 export const updateProjectAndFetch =
   (dataObject: any): AppThunk =>
-  (dispatch, getState) => {
-    dispatch(updateProjectAsync(dataObject));
+  async (dispatch, getState) => {
+    await  dispatch(updateProjectAsync(dataObject));
     dispatch(fetchProjectsAsync());
   };
 
 export const updateProjectImageAndFetch =
   (dataObject: any, selectedFile: any): AppThunk =>
-  (dispatch, getState) => {
-    dispatch(updateProjectImageAsync({ selectedFile, dataObject }));
+  async (dispatch, getState) => {
+    await dispatch(updateProjectImageAsync({ selectedFile, dataObject }));
     dispatch(fetchProjectsAsync());
   };
 
 export const deleteProjectAndFetch =
   (dataId: string): AppThunk =>
-  (dispatch, getState) => {
-    dispatch(deleteProjectAsync(dataId));
+  async (dispatch, getState) => {
+    await dispatch(deleteProjectAsync(dataId));
     dispatch(fetchProjectsAsync());
   };

@@ -12,7 +12,7 @@ function ButtonMain({
   return (
     <button
       onClick={onClick}
-      className="text-sm bg-th-button-primary px-6 py-2 rounded-full hover:bg-th-button-primary-hover transition-all"
+      className="text-sm bg-th-primary-medium px-6 py-2 rounded-full transition-all"
     >
       <p className={` text-white`}> {title}</p>
     </button>

@@ -7,7 +7,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import ChevronLeftIcon from "./../../../public/assets/icons/chevron_left.svg";
 import ChevronRightIcon from "./../../../public/assets/icons/chevron_right.svg";
-import { testimonialTestData } from "@/utils/web-content";
+import { testimonialTestData } from "@/utils/content";
 
 function TestomonialSection() {
   const prevRef = useRef(null);

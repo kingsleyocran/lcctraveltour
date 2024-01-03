@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { homeAboutText } from "@/utils/web-content";
+import { homeAboutText } from "@/utils/content";
 import HomeAboutVector from "../../../public/assets/vector/home-about-us.svg";
 
 function HomeAboutSection() {
@@ -12,7 +12,9 @@ function HomeAboutSection() {
         <div className="flex flex-col gap-5 items-start justify-center">
           {/* Text */}
           <p className="text-white">About LCC Travel & Tour</p>
-          <p className="text-white lg:text-3xl md:text-2xl text-2xl">{homeAboutText}</p>
+          <p className="text-white lg:text-2xl md:text-2xl text-2xl">
+            {homeAboutText}
+          </p>
 
           {/* Button */}
           <button

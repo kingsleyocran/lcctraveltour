@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/dashboard-components/views/ViewProjects.jsx", "src/components/dashboard-components/views/ViewTeam.jsx"],
   "exclude": ["node_modules"]
 }
