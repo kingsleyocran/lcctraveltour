@@ -15,6 +15,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { stateToHTML } from "draft-js-export-html";
 import { stateFromHTML } from "draft-js-import-html";
 import parse from "html-react-parser";
+import toast from "react-hot-toast";
 
 function ViewBlogs() {
   const dispatch = useAppDispatch();
@@ -184,45 +185,69 @@ export function AddModal({ isOpen, closeModal, data }) {
   }
 
   function dispatchAddHandler() {
-    dispatch(
-      blogsRedux.actions.addNewBlogAndFetch(
-        {
-          title: title ?? "",
-          blogID: convertNameToBlogID(title),
-          content: content ?? "",
-        },
-        selectedFile
-      )
-    );
+    try {
+      dispatch(
+        blogsRedux.actions.addNewBlogAndFetch(
+          {
+            title: title ?? "",
+            blogID: convertNameToBlogID(title),
+            content: draftStateToHTML(editorState.getCurrentContent()) ?? "",
+          },
+          selectedFile
+        )
+      );
+
+      toast.success("Successfully created a blog");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
   }
 
   function dispatchUpdateHandler() {
-    dispatch(
-      blogsRedux.actions.updateBlogAndFetch({
-        id: id,
-        title: title ?? "",
-        blogID: convertNameToBlogID(title),
-        content: content ?? "",
-      })
-    );
-  }
-
-  function dispatchUpdateImageHandler() {
-    dispatch(
-      blogsRedux.actions.updateBlogImageAndFetch(
-        {
+    try {
+      dispatch(
+        blogsRedux.actions.updateBlogAndFetch({
           id: id,
           title: title ?? "",
           blogID: convertNameToBlogID(title),
-          content: content ?? "",
-        },
-        selectedFile
-      )
-    );
+          content: draftStateToHTML(editorState.getCurrentContent()) ?? "",
+        })
+      );
+
+      toast.success("Successfully updated a blog");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
+  }
+
+  function dispatchUpdateImageHandler() {
+    try {
+      dispatch(
+        blogsRedux.actions.updateBlogImageAndFetch(
+          {
+            id: id,
+            title: title ?? "",
+            blogID: convertNameToBlogID(title),
+            content: draftStateToHTML(editorState.getCurrentContent()) ?? "",
+          },
+          selectedFile
+        )
+      );
+
+      toast.success("Successfully updated the blog image");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
   }
 
   function dispatchDeleteHandler() {
-    dispatch(blogsRedux.actions.deleteBlogAndFetch(id));
+    try {
+      dispatch(blogsRedux.actions.deleteBlogAndFetch(id));
+
+      toast.success("Successfully deleted a blog");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
   }
 
   const disableButtonState =
@@ -322,7 +347,7 @@ export function AddModal({ isOpen, closeModal, data }) {
                         htmlFor="fullName"
                         className={` text-sm mb-2 text-black`}
                       >
-                        Title
+                        Title*
                       </label>
                       <input
                         value={title}
@@ -345,7 +370,7 @@ export function AddModal({ isOpen, closeModal, data }) {
                           htmlFor="email"
                           className={` text-sm mb-2 text-black`}
                         >
-                          Image Picker
+                          Image Picker*
                         </label>
                         <div>
                           <input

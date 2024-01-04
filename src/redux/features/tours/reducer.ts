@@ -35,6 +35,17 @@ export const TourSlice = createSlice({
         state.status = "failed";
       })
 
+      //Fetch Blog By ID Async
+      .addCase(actions.fetchTourByIdAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(actions.fetchTourByIdAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+      })
+      .addCase(actions.fetchTourByIdAsync.rejected, (state) => {
+        state.status = "failed";
+      })
+
       //Add Blog Async
       .addCase(actions.addNewTourAsync.pending, (state) => {
         state.status = "loading";
@@ -84,7 +95,6 @@ export const TourSlice = createSlice({
 export const { fetchAllTours } = TourSlice.actions;
 
 export const selectTours = (state: RootState) => state.tours.toursList;
-export const selectToursLoadingState = (state: RootState) =>
-  state.tours.status;
+export const selectToursLoadingState = (state: RootState) => state.tours.status;
 
 export default TourSlice.reducer;

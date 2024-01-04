@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AppThunk } from "../../app/store";
 import { reducer } from "./index";
 import getAllTours from "@/backend/firebase/tours/getAllTours";
+import getTourById from "@/backend/firebase/tours/getTour";
 import addTour from "@/backend/firebase/tours/addTour";
 import deleteTour from "@/backend/firebase/tours/deleteTour";
 import updateTour from "@/backend/firebase/tours/updateTour";
@@ -54,6 +55,18 @@ export const fetchTourAsync = createAsyncThunk("tours/listAll", async () => {
 
   return result;
 });
+
+export const fetchTourByIdAsync = createAsyncThunk(
+  "tours/getOne",
+  async (tourID: any) => {
+    try {
+      const data = await getTourById(tourID);
+      return data;
+    } catch (error) {
+      return null;
+    }
+  }
+);
 
 export const addNewTourAsync = createAsyncThunk(
   "tours/addNew",

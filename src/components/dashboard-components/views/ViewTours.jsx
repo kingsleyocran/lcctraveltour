@@ -16,6 +16,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { stateToHTML } from "draft-js-export-html";
 import { stateFromHTML } from "draft-js-import-html";
 import parse from "html-react-parser";
+import toast from "react-hot-toast";
 
 function ViewTours() {
   const dispatch = useAppDispatch();
@@ -187,54 +188,78 @@ export function AddModal({ isOpen, closeModal, data }) {
   }, []);
 
   function dispatchAddHandler() {
-    dispatch(
-      toursRedux.actions.addNewTourAndFetch(
-        {
-          title: title ?? "",
-          summary: summary ?? "",
-          tourArea: tourArea ?? "",
-          tourArea: tourArea ?? "",
-          startingPrice: startingPrice ?? "",
-          content: content ?? "",
-        },
-        selectedFile
-      )
-    );
+    try {
+      dispatch(
+        toursRedux.actions.addNewTourAndFetch(
+          {
+            title: title ?? "",
+            summary: summary ?? "",
+            tourArea: tourArea ?? "",
+            tourArea: tourArea ?? "",
+            startingPrice: startingPrice ?? "",
+            content: draftStateToHTML(editorState.getCurrentContent()) ?? "",
+          },
+          selectedFile
+        )
+      );
+
+      toast.success("Successfully created a tour");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
   }
 
   function dispatchUpdateHandler() {
-    dispatch(
-      toursRedux.actions.updateTourAndFetch({
-        id: id,
-        title: title ?? "",
-        summary: summary ?? "",
-        tourArea: tourArea ?? "",
-        tourArea: tourArea ?? "",
-        startingPrice: startingPrice ?? "",
-        content: content ?? "",
-      })
-    );
-  }
-
-  function dispatchUpdateImageHandler() {
-    dispatch(
-      toursRedux.actions.updateTourImageAndFetch(
-        {
+    try {
+      dispatch(
+        toursRedux.actions.updateTourAndFetch({
           id: id,
           title: title ?? "",
           summary: summary ?? "",
           tourArea: tourArea ?? "",
           tourArea: tourArea ?? "",
           startingPrice: startingPrice ?? "",
-          content: content ?? "",
-        },
-        selectedFile
-      )
-    );
+          content: draftStateToHTML(editorState.getCurrentContent()) ?? "",
+        })
+      );
+
+      toast.success("Successfully updated a tour");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
+  }
+
+  function dispatchUpdateImageHandler() {
+    try {
+      dispatch(
+        toursRedux.actions.updateTourImageAndFetch(
+          {
+            id: id,
+            title: title ?? "",
+            summary: summary ?? "",
+            tourArea: tourArea ?? "",
+            tourArea: tourArea ?? "",
+            startingPrice: startingPrice ?? "",
+            content: draftStateToHTML(editorState.getCurrentContent()) ?? "",
+          },
+          selectedFile
+        )
+      );
+
+      toast.success("Successfully updated a tour image");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
   }
 
   function dispatchDeleteHandler() {
-    dispatch(toursRedux.actions.deleteTourAndFetch(id));
+    try {
+      dispatch(toursRedux.actions.deleteTourAndFetch(id));
+
+      toast.success("Successfully deleted a tour");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
   }
 
   const disableButtonState =
@@ -462,9 +487,11 @@ export function AddModal({ isOpen, closeModal, data }) {
                             border-th-textbox-fill focus:ring-transparent overflow-hidden
                             focus:border-th-container-on-surface rounded-sm cursor-pointer`}
                         >
-                          <p className="line-clamp-1">{!selectedFile
-                            ? "Select Image"
-                            : "Image added successfully"}</p>
+                          <p className="line-clamp-1">
+                            {!selectedFile
+                              ? "Select Image"
+                              : "Image added successfully"}
+                          </p>
                           <Image
                             src="/assets/icons/camera.svg"
                             height={16}

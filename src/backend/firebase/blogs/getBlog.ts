@@ -1,26 +1,22 @@
 import { db } from "../../../../firebase";
 import {
-  collection,
-  QueryDocumentSnapshot,
-  DocumentData,
-  query,
-  getDocs,
-  orderBy,
+  doc, getDoc
 } from "@firebase/firestore";
 
-export default async function getBlog() {
+export default async function getBlogById(blogId: string) {
   try {
-    const querySnapshot = await getDocs(
-      query(collection(db, "blogs"), orderBy("dateCreated", "desc"))
-    );
+    const docRef = doc(db, "blogs", blogId);
+    const docSnap = await getDoc(docRef);
 
-    const result: QueryDocumentSnapshot<DocumentData>[] = [];
-    querySnapshot.forEach((snapshot) => {
-      result.push(snapshot);
-    });
-
-    return result;
+    if (docSnap.exists()) {
+      const blogData = docSnap.data();
+      return blogData;
+    } else {
+      console.log("No blog found with ID:", blogId);
+      return null; 
+    }
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching blog:", error);
+    return null;
   }
 }

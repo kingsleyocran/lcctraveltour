@@ -1,9 +1,8 @@
 import CustomHead from "@/components/others/CustomHead";
 import HomeHeader from "@/components/home/HomeHeader";
 import NavBar from "@/components/NavBar";
-import React from "react";
-
 import Footer from "@/components/Footer";
+import React from "react";
 import HomeAboutSection from "@/components/home/HomeAboutSection";
 import HomeToursSection from "@/components/home/HomeToursSection";
 import HomeProgramsSection from "@/components/home/HomeProgramsSection";

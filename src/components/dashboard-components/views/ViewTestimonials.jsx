@@ -5,6 +5,7 @@ import { Fragment, useEffect, useState, useRef } from "react";
 import { useAppSelector, useAppDispatch } from "../../../redux/app/hooks";
 import * as testimonialsRedux from "../../../redux/features/testimonials";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 function ViewTestimonials() {
   const dispatch = useAppDispatch();
@@ -157,45 +158,69 @@ export function AddModal({ isOpen, closeModal, data }) {
   const disableButtonState = !content || !name || !portfolio;
 
   function dispatchAddHandler() {
-    dispatch(
-      testimonialsRedux.actions.addNewTestimonialAndFetch(
-        {
-          name: name,
-          portfolio: portfolio,
-          content: content,
-        },
-        selectedFile
-      )
-    );
+    try {
+      dispatch(
+        testimonialsRedux.actions.addNewTestimonialAndFetch(
+          {
+            name: name,
+            portfolio: portfolio,
+            content: content,
+          },
+          selectedFile
+        )
+      );
+
+      toast.success("Successfully created a testimonial");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
   }
 
   function dispatchUpdateHandler() {
-    console.log(portfolio);
-    dispatch(
-      testimonialsRedux.actions.updateTestimonialAndFetch({
-        id: id,
-        name: name,
-        portfolio: portfolio,
-        content: content,
-      })
-    );
-  }
-  function dispatchUpdateImageHandler() {
-    dispatch(
-      testimonialsRedux.actions.updateTestimonialImageAndFetch(
-        {
+    try {
+      dispatch(
+        testimonialsRedux.actions.updateTestimonialAndFetch({
           id: id,
           name: name,
           portfolio: portfolio,
           content: content,
-        },
-        selectedFile
-      )
-    );
+        })
+      );
+
+      toast.success("Successfully updated a testimonial");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
+  }
+
+  function dispatchUpdateImageHandler() {
+    try {
+      dispatch(
+        testimonialsRedux.actions.updateTestimonialImageAndFetch(
+          {
+            id: id,
+            name: name,
+            portfolio: portfolio,
+            content: content,
+          },
+          selectedFile
+        )
+      );
+
+      toast.success("Successfully updated a testimonial image");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
   }
 
   function dispatchDeleteHandler() {
-    dispatch(testimonialsRedux.actions.deleteTestimonialAndFetch(id));
+    try {
+      dispatch(testimonialsRedux.actions.deleteTestimonialAndFetch(id));
+
+      toast.success("Successfully deleted a testimonial");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
   }
 
   return (

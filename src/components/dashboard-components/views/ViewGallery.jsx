@@ -5,6 +5,7 @@ import { Fragment, useEffect, useState, useRef } from "react";
 import { useAppSelector, useAppDispatch } from "../../../redux/app/hooks";
 import * as galleryRedux from "../../../redux/features/gallery";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 function ViewGallery() {
   const dispatch = useAppDispatch();
@@ -138,39 +139,63 @@ export function AddModal({ isOpen, closeModal, data }) {
   const disableButtonState = !name && (!selectedFile || !imageUrl);
 
   function dispatchAddHandler() {
-    dispatch(
-      galleryRedux.actions.addNewGalleryAndFetch(
-        {
-          name: name,
-        },
-        selectedFile
-      )
-    );
+    try {
+      dispatch(
+        galleryRedux.actions.addNewGalleryAndFetch(
+          {
+            name: name,
+          },
+          selectedFile
+        )
+      );
+
+      toast.success("Successfully created a gallery image");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
   }
 
   function dispatchUpdateHandler() {
-    console.log(portfolio);
-    dispatch(
-      galleryRedux.actions.updateGalleryAndFetch({
-        id: id,
-        name: name,
-      })
-    );
-  }
-  function dispatchUpdateImageHandler() {
-    dispatch(
-      galleryRedux.actions.updateGalleryAndFetch(
-        {
+    try {
+      dispatch(
+        galleryRedux.actions.updateGalleryAndFetch({
           id: id,
           name: name,
-        },
-        selectedFile
-      )
-    );
+        })
+      );
+
+      toast.success("Successfully updated a gallery image name");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
+  }
+
+  function dispatchUpdateImageHandler() {
+    try {
+      dispatch(
+        galleryRedux.actions.updateGalleryImageAndFetch(
+          {
+            id: id,
+            name: name,
+          },
+          selectedFile
+        )
+      );
+
+      toast.success("Successfully updated a gallery image");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
   }
 
   function dispatchDeleteHandler() {
-    dispatch(galleryRedux.actions.deleteGalleryAndFetch(id));
+    try {
+      dispatch(galleryRedux.actions.deleteGalleryAndFetch(id));
+
+      toast.success("Successfully deleted a gallery image");
+    } catch (error) {
+      toast.error("An error occured, please try again");
+    }
   }
 
   return (

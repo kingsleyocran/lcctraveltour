@@ -4,10 +4,8 @@ import { homeToursData } from "@/utils/content";
 import { useAppSelector, useAppDispatch } from "@/redux/app/hooks";
 import * as toursRedux from "@/redux/features/tours";
 import parse from "html-react-parser";
-import { useRouter } from "next/router";
 
 function HomeToursSection() {
-  const router = useRouter();
   const dispatch = useAppDispatch();
   const toursState = useAppSelector(toursRedux.reducer.selectTours);
   const loadingState = useAppSelector(
@@ -30,9 +28,6 @@ function HomeToursSection() {
       >
         {toursState.slice(0, 3).map((data: any, index: any) => (
           <div
-            onClick={() => {
-              router.push({ pathname: `/tours/${data.id}` });
-            }}
             key={index}
             style={{ boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.06)" }}
             className=" bg-white rounded-2xl hover:scale-[102%] transition-all
