@@ -43,7 +43,7 @@ function AboutSection() {
             <div
               key={index}
               style={{ boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.06)" }}
-              className=" bg-white rounded-2xl hover:scale-[102%] transition-all duration-100 cursor-pointer p-7"
+              className=" bg-white rounded-2xl p-7"
             >
               <p className="text-th-primary-medium text-lg">{data.title}</p>
               <p className="text-black lg:text-lg md:text-lg text-lg mt-3 max-w-[700px] text-start">
