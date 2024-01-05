@@ -12,7 +12,7 @@ function BlogNewsCard({ data, index }: { data: any; index: any }) {
       }}
       key={index}
       style={{ boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.06)" }}
-      className=" w-full rounded-2xl p-3 flex flex-col md:flex-row gap-4"
+      className=" w-full rounded-2xl p-3 flex flex-col md:flex-row gap-4 hover:scale-[102%] transition-all duration-100 cursor-pointer"
     >
       <div className="md:w-250 w-full h-200 md:h-150 bg-neutral-100 rounded-xl relative flex-none">
         <Image

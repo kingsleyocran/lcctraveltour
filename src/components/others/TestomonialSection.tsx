@@ -128,16 +128,6 @@ function TestomonialSection() {
             ))}
           </Swiper>
         </div>
-
-        {/* MoreButton */}
-        <div className="flex justify-center mt-8">
-          <button
-            type="button"
-            className="bg-neutral-100 px-6 py-3 rounded-full text-lg md:text-base"
-          >
-            See more
-          </button>
-        </div>
       </div>}
 
       {loadingState == "loading" && (

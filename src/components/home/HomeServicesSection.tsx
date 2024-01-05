@@ -10,8 +10,7 @@ function HomeServicesSection() {
           <div
             key={index}
             style={{ boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.06)" }}
-            className=" bg-white rounded-2xl hover:scale-[102%] transition-all
-            duration-100 cursor-pointer p-2"
+            className=" bg-white rounded-2xl p-2"
           >
             <div className="p-4 flex flex-col gap-2">
               <h5 className="text-th-accent-medium text-lg">{data}</h5>

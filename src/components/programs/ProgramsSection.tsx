@@ -1,14 +1,20 @@
 import { programsData } from "@/utils/content";
 import React from "react";
 import ArrowRightUpwardIcon from "../../../public/assets/icons/arrow-side-upward.svg";
+import { useRouter } from "next/router";
 
 function ProgramsSection({ isNarrow }: { isNarrow: boolean }) {
+  const router = useRouter();
+
   return (
     <div className="relative max-w-7xl mx-5 xl:mx-auto flex flex-col items-center gap-4">
       <h5 className="text-3xl text-center">Programs</h5>
       <div className="grid grid-cols-1 gap-x-8 gap-y-8 rounded-3xl">
         {programsData.map((data, index) => (
           <div
+            onClick={() => {
+              router.push({ pathname: `/programs` });
+            }}
             key={index}
             style={{ boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.06)" }}
             className={`bg-white rounded-2xl gap-4 md:gap-1
