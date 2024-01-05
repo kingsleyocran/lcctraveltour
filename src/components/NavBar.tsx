@@ -32,7 +32,7 @@ function NavBar() {
             onClick={() => router.push("/")}
             className="relative flex items-center gap-1"
           >
-            <Logo width="75" height="45" viewBox="0 0 65 38"/>
+            <Logo width="75" height="45" viewBox="0 0 65 38" />
           </button>
 
           {/* DesktopMenu */}
@@ -78,10 +78,10 @@ function NavBar() {
             </button>
           </div>
 
-          { /* CTA Button */}
+          {/* CTA Button */}
           <div>
             <button
-              onClick={() => router.push("/donate")}
+              onClick={() => router.push("/tours")}
               type="button"
               className="lg:flex flex-row gap-4 hidden semibold h-[35px] text-base lg:text-sm  transition-all
               text-white bg-th-accent-medium px-6 py-2 rounded-xl"
@@ -163,41 +163,51 @@ function NavBar() {
 
                     {/* For Communities Tab */}
                     <button
-                      onClick={() => router.push("/")}
+                      onClick={() => router.push("/tours")}
                       className="py-5 px-6 w-full  flex flex-col justify-center  items-start active:bg-neutral-200 hover:bg-neutral-200"
                     >
                       <p className={`semibold text-xl text-th-text-medium`}>
-                        Communities
+                        Tours
                       </p>
                     </button>
 
                     {/* Events + News Tab */}
                     <button
-                      onClick={() => router.push("/")}
+                      onClick={() => router.push("/programs")}
                       className="py-5 px-6 w-full  flex flex-col justify-center  items-start active:bg-neutral-200 hover:bg-neutral-200"
                     >
                       <p className={`semibold text-xl text-th-text-medium`}>
-                        Events + News
+                        Programs
                       </p>
                     </button>
 
                     {/* Events + News Tab */}
                     <button
-                      onClick={() => router.push("/")}
+                      onClick={() => router.push("/about")}
                       className="py-5 px-6 w-full  flex flex-col justify-center  items-start active:bg-neutral-200 hover:bg-neutral-200"
                     >
                       <p className={`semibold text-xl text-th-text-medium`}>
-                        Contact Us
+                        About
                       </p>
                     </button>
 
-                    {/* Donate Button Tab */}
+                    {/* Events + News Tab */}
                     <button
-                      onClick={() => router.push("/")}
-                      className="py-5 px-6 w-full bg-neutral-200  flex flex-row justify-between items-center active:bg-neutral-300  hover:bg-th-accent-dark "
+                      onClick={() => router.push("/gallery")}
+                      className="py-5 px-6 w-full  flex flex-col justify-center  items-start active:bg-neutral-200 hover:bg-neutral-200"
                     >
-                      <p className={`semibold text-xl text-black`}>
-                        Donate now
+                      <p className={`semibold text-xl text-th-text-medium`}>
+                        Gallery
+                      </p>
+                    </button>
+
+                    {/* Events + News Tab */}
+                    <button
+                      onClick={() => router.push("/blogs")}
+                      className="py-5 px-6 w-full  flex flex-col justify-center  items-start active:bg-neutral-200 hover:bg-neutral-200"
+                    >
+                      <p className={`semibold text-xl text-th-text-medium`}>
+                        Blogs & News
                       </p>
                     </button>
                   </div>
