@@ -6,12 +6,12 @@ import WorkStudyIcon from "../../public/assets/icons/work-study.svg";
 import CrossCulturalIcon from "../../public/assets/icons/cross-cultural.svg";
 import NursingIcon from "../../public/assets/icons/nursing.svg";
 
-export function HeaderTextComponent() {
+export function HeaderTextComponent({colorClass="text-th-primary-medium"}: {colorClass?: string}) {
   return (
     <div className="capitalize">
-      We <span className="text-th-primary-medium">bridge</span> worlds, broaden
+      We <span className={colorClass}>bridge</span> worlds, broaden
       horizons, and believe in the transformative power of &nbsp;
-      <span className="text-th-primary-medium">Journeys</span>
+      <span className={colorClass}>Journeys</span>
     </div>
   );
 }
@@ -45,27 +45,6 @@ export const homeAboutText2 =
   opportunities for intellectual growth, cross-cultural understanding, and personal \
   development.";
 
-export const homeToursData = [
-  {
-    imgUrl: "/assets/images/home-tours-1.png",
-    title: "Educational Tours",
-    content:
-      "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences.",
-  },
-  {
-    imgUrl: "/assets/images/home-tours-2.png",
-    title: "Explore Africa",
-    content:
-      "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences.",
-  },
-  {
-    imgUrl: "/assets/images/home-tours-3.png",
-    title: "Corporate Retreats",
-    content:
-      "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences.",
-  },
-];
-
 export const programsData = [
   {
     icon: <WorkStudyIcon />,
@@ -87,29 +66,20 @@ export const programsData = [
     imgUrl: "",
     content:
       "Middle-class participants either in Ghana or from abroad can engage in cross-cultural exchanges, expanding their worldview and connecting with \
-      individuals from different backgrounds. These interactions foster tolerance, empathy, and a broader perspective on global issues.",
+      individuals from different backgrounds. These interactions foster tolerance, empathy, and a broader perspective on global issues",
   },
   {
     icon: <NursingIcon />,
-    title: "Nursing Recruitment",
+    title: "Nursing & Social Work Recruitment",
     subContent:
       "Recognizing the critical importance of healthcare and social services, LCC Travel partners with nursing and social work institutions to offer specialized \
     recruitment programs to THE UK.",
     imgUrl: "",
     content:
       "Recognizing the critical importance of healthcare and social services, LCC Travel partners with nursing and social work institutions to offer specialized \
-      recruitment programs to THE UK. Qualified nurses will be able to secure jobs and sponsorships to relocate to work in the United Kingdom via our recruitment \
-      partners.",
+      recruitment programs to THE UK. Qualified nurses will be able to secure jobs and sponsorships to relocate to work in the United Kingdom via our recruitment partners",
   },
 ];
-
-export const testimonialTestData = [...Array(10)].map(() => ({
-  name: "King Okonko",
-  content:
-    "Established in 2005, LCC Travel is a globally recognized travel and tour agency, blending the thrill of travel with purposeful experiences. Established in 2005, LCC Travel is a globally recognized travel and tour ",
-  portfolio: "CEO - Tinzu",
-  imgUrl: "/assets/images/test-image.png",
-}));
 
 export const faqContent = [
   {
@@ -149,6 +119,8 @@ export const faqContent = [
       "<p>Shoot us a note at <a style=' text-decoration: underline;'  href='mailto:info@nexa.media'>info@nexa.media</a> and we’ll do our best to answer. </p>",
   },
 ];
+
+export const homeServicesList = ["Corporate retreats", "Car rentals", "Ticketing", "Hotel Booking", "Visa assistance"]
 
 export const aboutContentMission =
   "At LCC Travel & Tours, our mission is to empower Ghana's student and \
@@ -203,8 +175,11 @@ export const socialLinks = {
 }
 
 export const contactDetails = {
-  address: "Fifth Avenue 6, Haatso",
+  address: "GT-351-7949 opp. Kari Anang Courts, Lashibi",
   googleMapLink: "https://maps.app.goo.gl/si5QWzG6aM8TvAej6?g_st=iw",
-  phone: "+233 50 7233 595",
+  phone: ["+233 303 955 182 ", "+233 552 508 622", "+233 244 115 225 "],
   email: "lcctravel.tours@gmail.com"
 }
+
+
+

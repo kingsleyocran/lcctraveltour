@@ -7,6 +7,7 @@ import deleteBlog from "@/backend/firebase/blogs/deleteBlog";
 import updateBlog from "@/backend/firebase/blogs/updateBlog";
 import { updateImage } from "@/backend/firebase/blogs/updateBlog";
 import { convertTimestamp } from "@/utils/helpers";
+import getBlogById from "@/backend/firebase/blogs/getBlog";
 
 //ASYNC THUNKS
 
@@ -23,34 +24,45 @@ export async function fetchBlogGetProps(): Promise<any> {
       blogID: item.data().blogID,
       content: item.data().content,
       dateCreated: item.data().dateCreated
-      ? convertTimestamp(item.data().dateCreated)
-      : "",
+        ? convertTimestamp(item.data().dateCreated)
+        : "",
     });
   });
 
   return JSON.parse(JSON.stringify(result));
 }
 
-export const fetchBlogAsync = createAsyncThunk(
-  "blogs/listAll",
-  async () => {
-    const data = await getAllBlogs();
+export const fetchBlogAsync = createAsyncThunk("blogs/listAll", async () => {
+  const data = await getAllBlogs();
 
-    const result: any = [];
-    data?.forEach((item: any) => {
-      result.push({
-        id: item.id,
-        imageUrl: item.data().imageUrl ?? "",
-        title: item.data().title,
-        blogID: item.data().blogID,
-        content: item.data().content,
-        dateCreated: item.data().dateCreated
+  const result: any = [];
+  data?.forEach((item: any) => {
+    result.push({
+      id: item.id,
+      imageUrl: item.data().imageUrl ?? "",
+      title: item.data().title,
+      blogID: item.data().blogID,
+      content: item.data().content,
+      dateCreated: item.data().dateCreated
         ? convertTimestamp(item.data().dateCreated)
         : "",
-      });
     });
+  });
 
-    return result;
+  return result;
+});
+
+export const fetchBlogByIdAsync = createAsyncThunk(
+  "blogs/getOne",
+  async (tourID: any) => {
+    try {
+      const data = await getBlogById(tourID);
+      if (data) {
+        return data;
+      }
+    } catch (error) {
+      return null;
+    }
   }
 );
 
@@ -98,13 +110,12 @@ export const deleteBlogAsync = createAsyncThunk(
 );
 
 //THUNK LOGICS
-export const checkBeforeFetchBlog =
-  (): AppThunk => (dispatch, getState) => {
-    const currentValue = reducer.selectBlogs(getState());
-    if (currentValue) {
-      dispatch(fetchBlogAsync());
-    }
-  };
+export const checkBeforeFetchBlog = (): AppThunk => (dispatch, getState) => {
+  const currentValue = reducer.selectBlogs(getState());
+  if (currentValue) {
+    dispatch(fetchBlogAsync());
+  }
+};
 
 export const addNewBlogAndFetch =
   (dataObject: any, selectedFile: any): AppThunk =>

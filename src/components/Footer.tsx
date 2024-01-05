@@ -13,7 +13,7 @@ function Footer() {
       <div className="bg-neutral-800">
         <div className=" relative max-w-7xl xl:mx-auto flex flex-col mt-[100px]">
           {/* Footer Area */}
-          <div className="flex flex-col md:flex-row gap-24  justify-between items-start z-30 px-6 md:px-12 lg:px-14 py-2 max-w-screen-2xl xl:mx-auto md:my-24 my-8 relative">
+          <div className="flex flex-col md:flex-row gap-16  justify-between items-start z-30 px-6 md:px-12 lg:px-14 py-2 max-w-screen-2xl xl:mx-auto md:my-24 my-8 relative">
             {/* Logo */}
             <button
               type="button"
@@ -51,7 +51,7 @@ function Footer() {
               </button>
 
               <button
-                onClick={() => router.push("/about-")}
+                onClick={() => router.push("/about")}
                 className="text-xl md:text-sm lg:text-md text-white hover:text-th-accent-medium"
               >
                 <p>About</p>
@@ -68,7 +68,7 @@ function Footer() {
                 onClick={() => router.push("/blogs")}
                 className="text-xl md:text-sm lg:text-md text-white hover:text-th-accent-medium"
               >
-                <p>Blogs & News</p>
+                <p className="text-left">Blogs & News</p>
               </button>
             </div>
 
@@ -89,7 +89,7 @@ function Footer() {
                 />
 
                 <p className={`text-xl md:text-sm lg:text-md text-white`}>
-                   {content.contactDetails.address}
+                  {content.contactDetails.address}
                 </p>
               </Link>
 
@@ -102,11 +102,11 @@ function Footer() {
                 />
 
                 <p className={`text-xl md:text-sm lg:text-md text-white`}>
-                {content.contactDetails.email}
+                  {content.contactDetails.email}
                 </p>
               </Link>
 
-              <Link href="tel:+233553930543" className="flex gap-3">
+              <div className="flex flex-row gap-3 ">
                 <Image
                   src="/assets/icons/phone.svg"
                   alt="phone icon"
@@ -114,10 +114,16 @@ function Footer() {
                   height={18}
                 />
 
-                <p className={`text-xl md:text-sm lg:text-md text-white`}>
-                {content.contactDetails.phone}
-                </p>
-              </Link>
+                <div className="flex flex-col gap-1">
+                  {content.contactDetails.phone.map((data: any, index: any) => (
+                    <Link href={`tel:${data}`} className="flex gap-3">
+                      <p className={`text-xl md:text-sm lg:text-md text-white`}>
+                        {data}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Socials */}

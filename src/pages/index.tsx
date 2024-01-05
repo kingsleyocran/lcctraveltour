@@ -1,14 +1,14 @@
-import CustomHead from "@/components/others/CustomHead";
+import CustomHead from "@/components/CustomHead";
 import HomeHeader from "@/components/home/HomeHeader";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import React from "react";
 import HomeAboutSection from "@/components/home/HomeAboutSection";
-import HomeToursSection from "@/components/home/HomeToursSection";
-import HomeProgramsSection from "@/components/home/HomeProgramsSection";
+import ToursSection from "@/components/tours/ToursSection";
+import ProgramsSection from "@/components/programs/ProgramsSection";
 import CitiesTilted from "@/components/home/CitiesTilted";
 import TestomonialSection from "@/components/others/TestomonialSection";
-import BlogNewsSection from "@/components/home/BlogNewsSection";
+import BlogNewsSection from "@/components/blogs/BlogNewsSection";
 import NewsletterSection from "@/components/others/NewsletterSection";
 import FAQSection from "@/components/others/FAQSection";
 import HomeServicesSection from "@/components/home/HomeServicesSection";
@@ -26,13 +26,13 @@ export default function Home() {
         <HomeAboutSection />
         <div className="h-[70px] md:h-[100px]"></div>
 
-        <HomeToursSection />
+        <ToursSection />
         <div className="h-[70px] md:h-[100px]"></div>
 
         <HomeServicesSection />
         <div className="h-[70px] md:h-[100px]"></div>
 
-        <HomeProgramsSection />
+        <ProgramsSection isNarrow={true} />
 
         <CitiesTilted />
 
@@ -40,10 +40,10 @@ export default function Home() {
         <div className="h-[70px] md:h-[100px]"></div>
 
         <BlogNewsSection />
-        
+
         <NewsletterSection />
-        
-        <FAQSection/>
+
+        <FAQSection />
 
         <Footer />
       </main>

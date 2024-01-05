@@ -4,7 +4,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import DashboardMain from "@/components/dashboard-components/DashboardMain";
 import ProtectedRoute from "@/context/ProtectedRoute";
-import CustomHead from "@/components/others/CustomHead";
+import CustomHead from "@/components/CustomHead";
 
 const Dashboard: NextPage = () => {
   const [mounted, setMounted] = useState(false);

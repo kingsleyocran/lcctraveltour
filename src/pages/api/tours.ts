@@ -1,11 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const nodemailer = require("nodemailer");
-
-type Data = {
-  name: string;
-};
-
 export default async function contact(
   req: NextApiRequest,
   res: NextApiResponse<any>
@@ -15,22 +9,21 @@ export default async function contact(
 
   client
     .send({
-      from: "boxplayweb@gmail.com",
-      fromName: "Boxplay Ventures Website",
-      subject: "BOXPLAY WEB CONTACT FORM RESPONSE",
-      //msgTo: ["ocrankingsley@gmail.com"],
-      msgTo: ["ventures@boxplayventures.com"],
-      msgCC: ["sam@boxplayventures.com", "nana@boxplayventures.com"],
-      bodyHtml: `<h3>Contact Form Details</h3> \
+      from: "lcctravel.tours@gmail.com",
+      fromName: "LCC Website",
+      subject: "BOOK A TOUR FORM RESPONSE",
+      msgTo: ["lcctravel.tours@gmail.com"],
+      // msgCC: ["sam@boxplayventures.com", "nana@boxplayventures.com"],
+      bodyHtml: `<h3>Tour Form Details</h3> \
         Name: ${req.body.name} \
         <br/> Email: ${req.body.email} \
-        <br/> Interest: ${req.body.interest} \
-        <br/> Message: ${req.body.message}`,
-      textHtml: `Contact Form Details \n
+        <br/> Phone: ${req.body.phone} \
+        <br/> Tour: ${req.body.tour}`,
+      textHtml: `Tour Form Details \n
       Name: ${req.body.name} \n
       Email: ${req.body.email} \n
-      Interest: ${req.body.interest} \n
-      Message: ${req.body.message}`,
+      Phone: ${req.body.phone} \n
+      Tour: ${req.body.tour}`,
     })
     .then((message: any) => {
       console.log(message)

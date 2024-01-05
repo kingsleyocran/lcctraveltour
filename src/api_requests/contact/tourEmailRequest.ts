@@ -1,6 +1,6 @@
 //
-export default async function contactApiRequest(dataPayload: any) {
-  var res = await fetch("/api/email", {
+export default async function tourEmailRequest(dataPayload: any) {
+  var res = await fetch("/api/tours", {
     method: "POST",
     headers: {
       Accept: "application/json, text/plain, */*",

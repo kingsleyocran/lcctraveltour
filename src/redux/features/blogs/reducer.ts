@@ -35,6 +35,17 @@ export const BlogSlice = createSlice({
         state.status = "failed";
       })
 
+      //Fetch Blog By ID Async
+      .addCase(actions.fetchBlogByIdAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(actions.fetchBlogByIdAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+      })
+      .addCase(actions.fetchBlogByIdAsync.rejected, (state) => {
+        state.status = "failed";
+      })
+
       //Add Blog Async
       .addCase(actions.addNewBlogAsync.pending, (state) => {
         state.status = "loading";
@@ -84,7 +95,6 @@ export const BlogSlice = createSlice({
 export const { fetchAllBlogs } = BlogSlice.actions;
 
 export const selectBlogs = (state: RootState) => state.blogs.blogsList;
-export const selectBlogsLoadingState = (state: RootState) =>
-  state.blogs.status;
+export const selectBlogsLoadingState = (state: RootState) => state.blogs.status;
 
 export default BlogSlice.reducer;

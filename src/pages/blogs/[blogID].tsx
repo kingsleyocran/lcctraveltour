@@ -3,51 +3,50 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import CustomHead from "@/components/CustomHead";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { useAppSelector, useAppDispatch } from "../../redux/app/hooks";
-import * as toursRedux from "../../redux/features/tours";
-import { Oval } from "@agney/react-loading";
-import ToursPage from "@/components/tours/ToursPage";
+import * as blogsRedux from "../../redux/features/blogs";
+import BlogsPage from "@/components/blogs/BlogNewsPage";
 
 interface Props {
   queryID: string;
 }
 
 export async function getServerSideProps(context: any) {
-  const { tourID } = context.query;
+  const { blogID } = context.query;
 
   return {
     props: {
-      queryID: tourID,
+      queryID: blogID,
     },
   };
 }
 
-const Tour: NextPage<Props> = ({ queryID }) => {
+const Blog: NextPage<Props> = ({ queryID }) => {
   const dispatch = useAppDispatch();
   const loadingState = useAppSelector(
-    toursRedux.reducer.selectToursLoadingState
+    blogsRedux.reducer.selectBlogsLoadingState
   );
-  const [tourData, settourData] = useState<any>(null);
+  const [blogData, setblogData] = useState<any>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const tourData = await dispatch(
-        toursRedux.actions.fetchTourByIdAsync(queryID!.toString())
+      const blogData = await dispatch(
+        blogsRedux.actions.fetchBlogByIdAsync(queryID!.toString())
       );
-      settourData(tourData.payload);
+      setblogData(blogData.payload);
+      console.log(blogData);
     };
     fetchData();
   }, [queryID]);
 
   return (
     <>
-      <CustomHead title="LCC Travel and Tours" />
+      <CustomHead title="LCC Travel and blogs - Blogs & News" />
 
       <main className="bg-white transition-all">
         <NavBar />
 
-        <ToursPage tourData={tourData} isLoading={loadingState === "loading"} />
+        <BlogsPage blogData={blogData} isLoading={loadingState === "loading"} />
 
         <Footer />
       </main>
@@ -55,4 +54,4 @@ const Tour: NextPage<Props> = ({ queryID }) => {
   );
 };
 
-export default Tour;
+export default Blog;

@@ -12,11 +12,9 @@ export default async function getBlogById(blogId: string) {
       const blogData = docSnap.data();
       return blogData;
     } else {
-      console.log("No blog found with ID:", blogId);
       return null; 
     }
   } catch (error) {
-    console.error("Error fetching blog:", error);
     return null;
   }
 }

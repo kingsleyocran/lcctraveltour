@@ -2,7 +2,7 @@ import { programsData } from "@/utils/content";
 import React from "react";
 import ArrowRightUpwardIcon from "../../../public/assets/icons/arrow-side-upward.svg";
 
-function HomeProgramsSection() {
+function ProgramsSection({ isNarrow }: { isNarrow: boolean }) {
   return (
     <div className="relative max-w-7xl mx-5 xl:mx-auto flex flex-col items-center gap-4">
       <h5 className="text-3xl text-center">Programs</h5>
@@ -11,8 +11,10 @@ function HomeProgramsSection() {
           <div
             key={index}
             style={{ boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.06)" }}
-            className=" bg-white rounded-2xl hover:scale-[102%] transition-all gap-4 md:gap-1
-          duration-100 cursor-pointer p-6 md:p-4 max-w-[600px] flex flex-col md:flex-row items-center justify-center "
+            className={`bg-white rounded-2xl gap-4 md:gap-1
+            duration-100 cursor-pointer p-6 md:p-4 ${
+              isNarrow ? "max-w-[600px]" : "max-w-[900px]"
+            } flex flex-col md:flex-row items-center justify-center`}
           >
             {/* Image */}
             <div
@@ -32,7 +34,11 @@ function HomeProgramsSection() {
                   viewBox="0 0 25 25"
                 />
               </div>
-              <p className="line-clamp-3 text-center md:text-left">
+              <p
+                className={`${
+                  isNarrow ? "line-clamp-3" : ""
+                }  text-center md:text-left`}
+              >
                 {data.content}
               </p>
             </div>
@@ -43,4 +49,4 @@ function HomeProgramsSection() {
   );
 }
 
-export default HomeProgramsSection;
+export default ProgramsSection;

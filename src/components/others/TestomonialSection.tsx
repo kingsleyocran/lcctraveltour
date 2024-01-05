@@ -7,7 +7,9 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import ChevronLeftIcon from "./../../../public/assets/icons/chevron_left.svg";
 import ChevronRightIcon from "./../../../public/assets/icons/chevron_right.svg";
-import { testimonialTestData } from "@/utils/content";
+import { useAppSelector, useAppDispatch } from "@/redux/app/hooks";
+import * as testimonialsRedux from "@/redux/features/testimonials";
+import { Oval } from "@agney/react-loading";
 
 function TestomonialSection() {
   const prevRef = useRef(null);
@@ -15,9 +17,21 @@ function TestomonialSection() {
 
   const [_, setInit] = useState<any>();
 
+  const dispatch = useAppDispatch();
+  const testimonialsState = useAppSelector(
+    testimonialsRedux.reducer.selectTestimonials
+  );
+  const loadingState = useAppSelector(
+    testimonialsRedux.reducer.selectTestimonialsLoadingState
+  );
+
+  useEffect(() => {
+    dispatch(testimonialsRedux.actions.checkBeforeFetchTestimonials());
+  }, []);
+
   return (
     <div className="flex flex-col gap-5 relative max-w-7xl mx-5 xl:mx-auto my-12">
-      <h5 className="text-3xl">Tours</h5>
+      <h5 className="text-3xl">What Are Clients Say</h5>
 
       {/* Image */}
       <div className="w-full h-[130px] md:h-[320px]  relative">
@@ -58,67 +72,79 @@ function TestomonialSection() {
         </div>
       </div>
 
-      {/* Card Row */}
-      <div className="h-350 md:h-[340px]">
-        <Swiper
-          slidesPerView={"auto"}
-          spaceBetween={10}
-          freeMode={true}
-          modules={[Navigation, FreeMode, Pagination]}
-          className="mySwiper"
-          navigation={{
-            prevEl: prevRef!.current,
-            nextEl: nextRef!.current,
-          }}
-          onInit={() => setInit(true)}
-        >
-          {testimonialTestData.slice(0, 10).map((data: any, index) => (
-            <SwiperSlide
-              key={index}
-              onClick={() => {}}
-              style={{ width: "350px" }}
-            >
-              <div
-                style={{ boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.06)" }}
-                className="m-3 p-8 rounded-3xl bg-white h-350 md:h-[340px] transition-all duration-100 flex flex-col gap-6"
+      {loadingState == "idle" && <div>
+        {/* Card Row */}
+        <div className="h-350 md:h-[340px]">
+          <Swiper
+            slidesPerView={"auto"}
+            spaceBetween={10}
+            freeMode={true}
+            modules={[Navigation, FreeMode, Pagination]}
+            className="mySwiper"
+            navigation={{
+              prevEl: prevRef!.current,
+              nextEl: nextRef!.current,
+            }}
+            onInit={() => setInit(true)}
+          >
+            {testimonialsState.slice(0, 10).map((data: any, index: any) => (
+              <SwiperSlide
+                key={index}
+                onClick={() => {}}
+                style={{ width: "350px" }}
               >
-                {/* Avatar */}
-                <div className="w-[70px] h-[70px] relative">
-                  <Image
-                    src={data.imgUrl}
-                    alt=""
-                    fill
-                    style={{ objectFit: "contain", borderRadius: "200px" }}
-                    priority
-                  />
+                <div
+                  style={{ boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.06)" }}
+                  className="m-3 p-8 rounded-3xl bg-white h-350 md:h-[340px] transition-all duration-100 flex flex-col gap-6"
+                >
+                  {/* Avatar */}
+                  <div className="w-[70px] h-[70px] rounded-full bg-neutral-100 relative">
+                    {data.imageUrl && (
+                      <Image
+                        src={data.imageUrl}
+                        alt=""
+                        fill
+                        style={{ objectFit: "cover", borderRadius: "200px" }}
+                        priority
+                      />
+                    )}
+                  </div>
+
+                  <div className="flex-1">
+                    <p className="text-base md:text-sm line-clamp-5 text-neutral-500">
+                      {data.content}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <p className="text-base md:text-sm bold text-th-primary-medium">
+                      {data.name}
+                    </p>
+
+                    <p className="text-base md:text-sm">{data.portfolio}</p>
+                  </div>
                 </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-                <p className="text-base md:text-sm line-clamp-5 text-neutral-500">
-                  {data.content} {data.content}
-                </p>
+        {/* MoreButton */}
+        <div className="flex justify-center mt-8">
+          <button
+            type="button"
+            className="bg-neutral-100 px-6 py-3 rounded-full text-lg md:text-base"
+          >
+            See more
+          </button>
+        </div>
+      </div>}
 
-                <div className="flex flex-col gap-2">
-                  <p className="text-base md:text-sm bold text-th-primary-medium">
-                    {data.name}
-                  </p>
-
-                  <p className="text-base md:text-sm">{data.portfolio}</p>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      {/* MoreButton */}
-      <div className="flex justify-center mt-8">
-        <button
-          type="button"
-          className="bg-neutral-100 px-6 py-3 rounded-full text-lg md:text-base"
-        >
-          See more
-        </button>
-      </div>
+      {loadingState == "loading" && (
+        <div className="md:h-300 h-200 flex flex-row justify-center items-center">
+          <Oval width="60" color="grey" />
+        </div>
+      )}
     </div>
   );
 }

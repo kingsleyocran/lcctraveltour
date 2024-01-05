@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useState, useEffect } from "react";
 import LoginSection from "@/components/dashboard-components/LoginSection";
 import NavBar from "@/components/NavBar";
-import CustomHead from "@/components/others/CustomHead";
+import CustomHead from "@/components/CustomHead";
 import Footer from "@/components/Footer";
 
 const DashboardLogin: NextPage = () => {
