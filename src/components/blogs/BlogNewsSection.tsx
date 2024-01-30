@@ -20,35 +20,38 @@ function BlogNewsSection() {
 
   return (
     <>
-    {blogsState && <div className="relative max-w-7xl mx-5 xl:mx-auto flex flex-col items-center gap-4">
-      <div className="w-full flex flex-row justify-between items-center">
-        <h5 className="text-3xl text-center">Blogs & News</h5>
-        {/* MoreButton */}
-        <div className="flex justify-center">
-          <button
-            onClick={() => {
-              router.push({ pathname: `/blogs` });
-            }}
-            type="button"
-            className="bg-neutral-100 px-6 py-3 rounded-full text-lg md:text-base"
-          >
-            Read more
-          </button>
-        </div>
-      </div>
+      {loadingState === "idle" && blogsState.length > 0 && (
+        <div className="relative max-w-7xl mx-5 xl:mx-auto flex flex-col items-center gap-4">
+          <div className="w-full flex flex-row justify-between items-center">
+            <h5 className="text-3xl text-center">Blogs & News</h5>
+            {/* MoreButton */}
+            <div className="flex justify-center">
+              <button
+                onClick={() => {
+                  router.push({ pathname: `/blogs` });
+                }}
+                type="button"
+                className="bg-neutral-100 px-6 py-3 rounded-full text-lg md:text-base"
+              >
+                Read more
+              </button>
+            </div>
+          </div>
 
-      {loadingState === "idle" && <div className="w-full flex flex-col gap-6">
-        {blogsState.slice(0, 4).map((data: any, index: any) => (
-          <BlogNewsCard data={data} index={index} />
-        ))}
-      </div>}
+          <div className="w-full flex flex-col gap-6">
+            {blogsState.slice(0, 4).map((data: any, index: any) => (
+              <BlogNewsCard data={data} index={index} />
+            ))}
+          </div>
+        </div>
+      )}
 
       {loadingState == "loading" && (
         <div className="md:h-300 h-300 flex flex-row justify-center items-center">
           <Oval width="60" color="grey" />
         </div>
       )}
-    </div>}</>
+    </>
   );
 }
 

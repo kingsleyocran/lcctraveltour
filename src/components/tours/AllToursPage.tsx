@@ -19,26 +19,36 @@ function AllToursPage() {
     <>
       {loadingState == "idle" && (
         <div className="relative max-w-7xl mx-5 xl:mx-auto flex flex-col gap-4">
-          <h5 className="text-3xl mt-4 md:mt-12">In Ghana Tours</h5>
+          {toursState.filter((e: any) => e.tourArea == "In Ghana")
+            .length !== 0 && (
+            <h5 className="text-3xl mt-16">In Ghana Tours </h5>
+          )}
           <div
             className={`${
               toursState.length > 3 ? "md:grid-cols-3" : "md:grid-cols-2"
             } grid grid-cols-1 gap-x-8 gap-y-8 rounded-3xl`}
           >
-            {toursState.slice(0, 3).map((data: any, index: any) => (
-              <TourCard data={data} index={index} />
-            ))}
+            {toursState
+              .filter((e: any) => e.tourArea == "In Ghana")
+              .map((data: any, index: any) => (
+                <TourCard data={data} index={index} />
+              ))}
           </div>
 
-          <h5 className="text-3xl mt-16">Outside Ghana Tours</h5>
+          {toursState.filter((e: any) => e.tourArea == "Outside Ghana")
+            .length !== 0 && (
+            <h5 className="text-3xl mt-16">Outside Ghana Tours </h5>
+          )}
           <div
             className={`${
               toursState.length > 3 ? "md:grid-cols-3" : "md:grid-cols-2"
             } grid grid-cols-1 gap-x-8 gap-y-8 rounded-3xl`}
           >
-            {toursState.slice(0, 3).map((data: any, index: any) => (
-              <TourCard data={data} index={index} />
-            ))}
+            {toursState
+              .filter((e: any) => e.tourArea == "Outside Ghana")
+              .map((data: any, index: any) => (
+                <TourCard data={data} index={index} />
+              ))}
           </div>
         </div>
       )}
